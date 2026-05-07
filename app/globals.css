@@ -1,26 +1,112 @@
-@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6ede0;
+  --foreground: #1b4d3e;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html, body {
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  font-family: 'Montserrat', sans-serif !important;
+  margin: 0;
+  padding: 0;
+	scroll-behavior: smooth;
+}
+
+h1, h2, h3, .h1, .h2, .h3 {
+  font-family: 'Bodoni Moda', serif !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  letter-spacing: -0.02em;
+}
+
+.btn.btn-custom {
+  background-color: #85937a !important;
+  border-color: #85937a !important;
+  color: white !important;
+  font-family: 'Montserrat', sans-serif !important;
+  transition: all 0.3s ease;
+}
+
+.btn.btn-custom:hover {
+  background-color: #143a2f !important;
+  border-color: #143a2f !important;
+  transform: translateY(-2px);
+}
+
+.navbar a, .navbar .nav-link {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.navbar a:hover, .navbar .nav-link:hover {
+  color: #143a2f !important;
+}
+
+.hover-shadow { 
+  transition: all 0.3s ease-in-out; 
+}
+
+.hover-shadow:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.card-text {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400;
+  line-height: 1.6; /* Aumenta un po' lo spazio tra le righe per renderlo più "arioso" */
+  color: #4a4a4a; /* Un grigio molto scuro o il tuo verde per non appesantire */
+}
+
+a.navbar-brand-a {
+	font-family: 'Bodoni Moda', serif !important;
+	font-weight: 600 !important; /* Opzionale: lo rende un po' più evidente */
+  text-decoration: none; /* Toglie la sottolineatura se non ti piace */
+  transition: color 0.3s ease;
+	color: #525c4b;
+}
+
+section {
+	scroll-margin-top: 80px;
+}
+
+.page-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* Sale leggermente verso l'alto */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.brand-responsive::after {
+	content: "Dott.ssa Albina Crapella";
+	font-weight: bold;
+	color: #525c4b;
+}
+
+@media (min-width: 768px) {
+	.brand-responsive::after{
+		content: "Dott.ssa Albina Crapella | Biologa Nutrizionista"
+	}
+}
+
+.navbar-toggler {
+		padding: 10px !important; /* Aumenta l'area cliccabile */
+    z-index: 1050 !important; /* Porta il tasto sopra a tutto */
+    cursor: pointer;
+    pointer-events: auto !important;
 }
