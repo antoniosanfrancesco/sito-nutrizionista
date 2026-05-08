@@ -23,8 +23,11 @@ const lora = Lora({
 
 // 2. I tuoi Metadata (lasciali come sono)
 export const metadata = {
-  title: 'Nutrizionista Professionale | Benessere e Salute',
-  description: 'Consulenze nutrizionali personalizzate',
+  title: 'Dott.ssa Albina Crapella | Biologa Nutrizionista',
+  description: 'Consulenze nutrizionali personalizzate per ritrovare il tuo equilibrio e benessere',
+	icons: {
+    icon: '/icon.svg', 
+  },
 };
 
 // 3. Il Layout aggiornato
