@@ -1,52 +1,78 @@
 'use client';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, Spinner } from 'react-bootstrap';
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
-export default function FormArea () {
+export default function FormArea() {
   const [testo, setTesto] = useState("");
   const [nome, setNome] = useState("");
   const [numero, setNumero] = useState("");
   const [mail, setMail] = useState("");
+  
+  // 1. Stato per il caricamento
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+
+    if (testo.length < 10) {
+      alert("Il messaggio è troppo breve, descrivi meglio la tua richiesta.");
+      return;
+    }
+
+    // 2. Attiva il caricamento
+    setIsSubmitting(true);
+
+    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-		if (testo.length < 10) {
-  		alert("Il messaggio è troppo breve, descrivi meglio la tua richiesta.");
-  		return;
-}
-
     const templateParams = {
-     message: testo,
-     user_nome: nome,
-     user_tel: numero,
-     user_email: mail,
-   };
+      message: testo,
+      user_nome: nome,
+      user_tel: numero,
+      user_email: mail,
+    };
 
-  emailjs.send(serviceID, templateID, templateParams, publicKey)
-    .then((response) => {
-       alert('Email inviata con successo!');
-       // Pulisce tutti i campi del form dopo l'invio
-       setTesto(""); 
-       setNome("");
-       setMail("");
-       setNumero("");
-    })
-    .catch((err) => {
-       console.error('Errore:', err);
-    });
+    emailjs.send(serviceID, templateID, templateParams, publicKey)
+      .then((response) => {
+        alert('Email inviata con successo!');
+        setTesto("");
+        setNome("");
+        setMail("");
+        setNumero("");
+      })
+      .catch((err) => {
+        console.error('Errore:', err);
+        alert("Si è verificato un errore durante l'invio.");
+      })
+      .finally(() => {
+        // 3. Disattiva il caricamento in ogni caso (successo o errore)
+        setIsSubmitting(false);
+      });
   };
 
   return (
     <Container className="py-5" style={{ overflow: 'hidden' }}>
+      {/* 4. Aggiungiamo lo stile CSS per l'effetto hover direttamente qui */}
+      <style jsx>{`
+        .btn-custom {
+          transition: all 0.3s ease !important;
+        }
+        .btn-custom:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+          filter: brightness(1.1);
+        }
+        .btn-custom:active {
+          transform: translateY(-1px);
+        }
+      `}</style>
+
       <Row className="justify-content-center">
         <Col 
           md={8} lg={8} 
-          data-aos="zoom-in" // Effetto accogliente che espande il form
+          data-aos="zoom-in"
           data-aos-duration="1200"
         >
           <div className="bg-white p-4 p-md-5 rounded-5 shadow-sm">
@@ -105,14 +131,30 @@ export default function FormArea () {
               <div className="text-center" data-aos="fade-up" data-aos-delay="600">
                 <Button 
                   type="submit" 
-                  className="border-0 py-3 px-5 shadow-sm btn-submit"
+                  className="border-0 py-3 px-5 shadow-sm btn-custom"
+                  disabled={isSubmitting} // 5. Disabilita il tasto durante l'invio
                   style={{ 
                     backgroundColor: '#85937a', 
                     borderRadius: '50px',
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                    minWidth: '200px' // Per evitare che il tasto cambi dimensione col caricamento
                   }}
                 >
-                  Invia il messaggio
+                  {isSubmitting ? (
+                    <>
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                        className="me-2"
+                      />
+                      Invio in corso...
+                    </>
+                  ) : (
+                    "Invia il messaggio"
+                  )}
                 </Button>
               </div>
             </Form>
