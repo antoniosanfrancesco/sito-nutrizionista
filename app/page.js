@@ -22,8 +22,10 @@ export default function Home() {
             <Col lg={6}>
               <h1 className="display-3 fw-bold">Dott.ssa <br/>Albina Crapella</h1>
               <p className="lead mb-4">La nutrizione non è perfezione, ma ascolto: ti accompagno a trovare il tuo equilibrio, con rispetto, serenità e consapevolezza</p>
-              <Button className="btn-custom mb-5" href="https://wa.me/+393762278025" >Prenota ora</Button>
-							
+              
+							<div className='text-center text-lg-start'>
+								<Button className="btn-custom mb-5 " href="https://wa.me/+393762278025" >Prenota ora</Button>
+							</div>
 							
 							<p className='display-5 fw-bold'>Social</p>
 							

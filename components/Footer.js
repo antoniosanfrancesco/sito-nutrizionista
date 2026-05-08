@@ -1,6 +1,7 @@
 'use client';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaInstagram, FaWhatsapp, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'; // Se usi react-icons
+import { FaInstagram, FaWhatsapp, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'; 
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function Footer() {
   return (
@@ -22,6 +23,16 @@ export default function Footer() {
               <FaEnvelope className="me-2" />
               <a href="mailto:info@albinacrapella.it" style={{ color: 'inherit', textDecoration: 'none' }}>nutrizionistalbinacrapella@gmail.com</a>
             </div>
+						<div className="d-flex align-items-center mb-2">
+							<a 
+        				href="tel:+393762278025" 
+        				className="text-decoration-none d-flex align-items-center justify-content-center justify-content-md-start"
+								style={{ color: 'inherit' }}
+     						>
+        				<i className="bi bi-telephone-fill me-2"></i>
+        					+39 376 227 8025
+      				</a>
+            </div>
             <div className="d-flex align-items-center mb-2">
               <FaMapMarkerAlt className="me-2" />
               <span>Viale I Maggio II Traversa 9, Lamezia Terme 88046 (CZ)</span>
@@ -37,6 +48,7 @@ export default function Footer() {
             </div>
             <div className="small" style={{ opacity: 0.7 }}>
               <p className="mb-0">© {new Date().getFullYear()} Albina Crapella. All rights reserved.</p>
+							<p className='mt-1'>Designed by Antonio Sanfrancesco</p>
               <a href="/privacy-policy" style={{ color: 'inherit' }} className="me-2">Privacy Policy</a>
               <a href="/cookie-policy" style={{ color: 'inherit' }}>Cookie Policy</a>
             </div>

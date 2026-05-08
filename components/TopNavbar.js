@@ -52,15 +52,12 @@ export default function TopNavBar() {
           className="d-lg-none"
           style={{ backgroundColor: '#f6ede0', width: '280px' }}
         >
-          <Offcanvas.Header closeButton className="border-bottom">
-            <Offcanvas.Title id="offcanvasNavbarLabel" className="fw-bold" style={{ color: greenColor }}>
-              Menu
-            </Offcanvas.Title>
+          <Offcanvas.Header closeButton>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <Nav className="flex-column text-end pe-3" style={{ fontFamily: 'Montserrat' }}>
+            <Nav className="flex-column text-center text-dark" style={{ fontFamily: 'Montserrat' }}>
               <Nav.Link as={Link} href="/" onClick={handleClose} className="py-3 fs-5">Home</Nav.Link>
-              <Nav.Link as={Link} href="/#chi-sono" onClick={handleClose} className="py-3 fs-5">Chi Sono</Nav.Link>
+              <Nav.Link as={Link} href="/chi-sono" onClick={handleClose} className="py-3 fs-5">Chi Sono</Nav.Link>
               <Nav.Link as={Link} href="/servizi" onClick={handleClose} className="py-3 fs-5">Servizi</Nav.Link>
               <Nav.Link as={Link} href="/#dove-ricevo" onClick={handleClose} className="py-3 fs-5">Dove Ricevo</Nav.Link>
             </Nav>

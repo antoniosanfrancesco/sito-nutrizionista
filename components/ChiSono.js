@@ -9,7 +9,7 @@ export default function ChiSono () {
         <Row className='align-items-center'>
         
           {/* Colonna testo: entra da Sinistra */}
-          <Col lg={6} className='mx-auto mb-4' data-aos="fade-right" data-aos-duration="1200"> 
+          <Col lg={6} className='mx-auto mb-4 p-4' data-aos="fade-right" data-aos-duration="1200"> 
             <h2 className='mb-4' style={{ fontSize: '2.8rem', color: '#1b4d3e', fontFamily: 'var(--font-titles)' }}>
               Benvenuti,
             </h2>
