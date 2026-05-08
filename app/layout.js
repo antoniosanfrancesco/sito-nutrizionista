@@ -26,7 +26,7 @@ export const metadata = {
   title: 'Dott.ssa Albina Crapella | Biologa Nutrizionista',
   description: 'Consulenze nutrizionali personalizzate per ritrovare il tuo equilibrio e benessere',
 	icons: {
-    icon: '/icon.svg', 
+    icon: '/icona-nutrizionista.png',
   },
 };
 
