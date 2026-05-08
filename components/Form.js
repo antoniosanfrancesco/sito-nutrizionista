@@ -91,6 +91,8 @@ export default function FormArea() {
                   placeholder='Mario Rossi'
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
+									autoComplete='name'
+									name='name'
                   required
                 />
               </Form.Group>
@@ -103,6 +105,7 @@ export default function FormArea() {
                   value={mail}
                   onChange={(e) => setMail(e.target.value)}
                   required
+									autoComplete='email'
                 />
               </Form.Group>
               
@@ -112,7 +115,8 @@ export default function FormArea() {
                   type='tel'
                   placeholder='Il tuo numero'
                   value={numero}
-                  onChange={(e) => setNumero(e.target.value)}/>
+                  onChange={(e) => setNumero(e.target.value)}
+									autoComplete='tel'/>
               </Form.Group>
 
               <Form.Group className="mb-4" data-aos="fade-up" data-aos-delay="500">
