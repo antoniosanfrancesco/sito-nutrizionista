@@ -45,12 +45,12 @@ export default function ChiSono () {
           {/* Colonna Immagine: entra da Destra */}
           <Col lg={6} className="text-lg-end" data-aos="fade-left" data-aos-duration="1200">
             <Image 
-              src="/images/hero.jpeg" 
+              src="/images/hero.webp" 
               alt="Dott.ssa Albina Crapella"
               width={450} 
               height={450}
               className="rounded-5 shadow-lg img-fluid"
-              style={{ objectFit: 'cover' }}
+              style={{ objectFit: 'cover'}}
             />
           </Col>
         </Row>

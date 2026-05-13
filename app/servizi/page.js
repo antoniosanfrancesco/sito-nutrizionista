@@ -79,7 +79,7 @@ export default function Servizi() {
         <Row className="align-items-center mb-5 g-5">
           <Col lg={6} data-aos="fade-right">
             <Image 
-              src="/images/anamnesi.jpg" 
+              src="/images/anamnesi.webp" 
               alt="Consulenza Online e Alimentare" 
               className="img-fluid rounded-4 shadow-sm" 
               width={800} height={600}        
@@ -113,7 +113,7 @@ export default function Servizi() {
           </Col>
           <Col lg={6} className="order-1 order-lg-2" data-aos="fade-left">
             <Image 
-              src="/images/bia.jpg" 
+              src="/images/bia.webp" 
               alt="Akern BIVA" 
               width={800} height={600}
               className="img-fluid rounded-4 shadow-sm" 
@@ -125,7 +125,7 @@ export default function Servizi() {
         <Row className="align-items-center g-5">
           <Col lg={6} data-aos="fade-right">
             <Image 
-              src="/images/piano_alimentare-1.jpg" 
+              src="/images/piano_alimentare-1.webp" 
               width={800} height={600}  
               alt="Piano Nutrizionale Personalizzato" 
               className="img-fluid rounded-4 shadow-sm" 
@@ -156,7 +156,7 @@ export default function Servizi() {
           </Col>
           <Col lg={6} className="order-1 order-lg-2" data-aos="fade-left">
             <Image 
-              src="/images/bia.jpg" 
+              src="/images/domicilio.webp" 
               alt="Akern BIVA" 
               width={800} height={600}
               className="img-fluid rounded-4 shadow-sm" 

@@ -36,7 +36,7 @@ export default function Home() {
             </Col>
             <Col lg={6} className="text-lg-end">
 							<Image 
-								src="/images/hero.jpeg"
+								src="/images/hero.webp"
 								alt="Foto della Dottoressa"
 								width={450} 
 								height={450}

@@ -12,12 +12,12 @@ export default function PrivacyPolicy() {
             
             <section className="mt-5">
               <h4 className="font-bodoni">1. Titolare del Trattamento</h4>
-              <p>Il titolare del trattamento dei dati è la <strong>Dott.ssa Albina Crapella</strong>, con studio professionale in [Tuo Indirizzo, Città], P.IVA [Tua P.IVA]. Email di contatto: [Tua Email].</p>
+              <p>Il titolare del trattamento dei dati è la <strong>Dott.ssa Albina Crapella</strong>, con studio professionale in Viale I Maggio II Traversa 9, Lamezia Terme, P.IVA 03958500799. Email di contatto: nutrizionistalbinacrapella@gmail.com.</p>
             </section>
 
             <section className="mt-4">
               <h4 className="font-bodoni">2. Tipologia di Dati Raccolti</h4>
-              <p>Attraverso questo sito vengono raccolti dati forniti volontariamente dall&utente (nome, email, numero di telefono tramite form o link WhatsApp) e dati di navigazione tecnici (indirizzi IP, log di sistema).</p>
+              <p>Attraverso questo sito vengono raccolti dati forniti volontariamente dall&apos;utente (nome, email, numero di telefono tramite form o link WhatsApp) e dati di navigazione tecnici (indirizzi IP, log di sistema).</p>
             </section>
 
             <section className="mt-4">
@@ -32,12 +32,26 @@ export default function PrivacyPolicy() {
 
             <section className="mt-4">
               <h4 className="font-bodoni">4. Base Giuridica</h4>
-              <p>Il trattamento si basa sul consenso dell&interessato e sull&esecuzione di misure precontrattuali o contrattuali richieste dall&utente stesso.</p>
+              <p>Il trattamento si basa sul consenso dell&apos;interessato e sull&apos;esecuzione di misure precontrattuali o contrattuali richieste dall&apos;utente stesso.</p>
             </section>
 
             <section className="mt-4">
               <h4 className="font-bodoni">5. Diritti dell&Interessato</h4>
-              <p>Ai sensi del GDPR, hai il diritto di accedere ai tuoi dati, chiederne la rettifica, la cancellazione o la limitazione del trattamento scrivendo all&indirizzo email sopra indicato.</p>
+              <p>Ai sensi del GDPR, hai il diritto di accedere ai tuoi dati, chiederne la rettifica, la cancellazione o la limitazione del trattamento scrivendo all&apos;indirizzo email sopra indicato.</p>
+            </section>
+
+            <section className="mt-4">
+              <h4 className="font-bodoni">6. Conservazione e Destinatari</h4>
+              <p>
+                I dati sono conservati per il tempo necessario all&apos;evasione della richiesta e trattati esclusivamente dal Titolare o da responsabili tecnici incaricati (es. hosting provider). I dati non vengono trasferiti a terzi né diffusi.
+              </p>
+            </section>
+
+            <section className="mt-4">
+              <h4 className="font-bodoni">7. Cookie Policy</h4>
+              <p>
+                Questo sito utilizza solo cookie tecnici necessari alla navigazione e strumenti di analisi anonimizzati. Non viene effettuata profilazione degli utenti per scopi pubblicitari.
+              </p>
             </section>
           </Col>
         </Row>
