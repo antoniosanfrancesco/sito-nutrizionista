@@ -106,9 +106,9 @@ export default function Servizi() {
                 monitorando la tua reale <strong>massa muscolare</strong> e il tuo stato di idratazione per garantirti un dimagrimento qualitativo e duraturo.
             </p>
             <ul className="list-unstyled mt-3">
-              <li className="mb-2" data-aos="fade-up" data-aos-delay="400">✅ <strong>Stato Idratativo:</strong> Ritenzione idrica o disidratazione.</li>
-              <li className="mb-2" data-aos="fade-up" data-aos-delay="500">✅ <strong>Massa Cellulare:</strong> Indice della reale massa muscolare e nutrizione.</li>
-              <li className="mb-2" data-aos="fade-up" data-aos-delay="600">✅ <strong>Massa Grassa:</strong> Monitoraggio del reale dimagrimento qualitativo.</li>
+              <li className="mb-2" data-aos="fade-up" data-aos-delay="400"><strong>Stato Idratativo:</strong> Ritenzione idrica o disidratazione.</li>
+              <li className="mb-2" data-aos="fade-up" data-aos-delay="500"><strong>Massa Cellulare:</strong> Indice della reale massa muscolare e nutrizione.</li>
+              <li className="mb-2" data-aos="fade-up" data-aos-delay="600"><strong>Massa Grassa:</strong> Monitoraggio del reale dimagrimento qualitativo.</li>
             </ul>
           </Col>
           <Col lg={6} className="order-1 order-lg-2" data-aos="fade-left">

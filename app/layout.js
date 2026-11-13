@@ -1,24 +1,24 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Playfair_Display, Lora } from 'next/font/google';
+import { Fraunces,  Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import TopNavBar from '../components/TopNavbar'; // Assicurati che il percorso sia corretto
 import Footer from '@/components/Footer';
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 import AOSinit from '@/components/AOSinit';
 
 
 // 1. Configurazione dei font
-const playfair = Playfair_Display({ 
+const fraunces = Fraunces({ 
   subsets: ['latin'],
-  weight: ['700'],
-  variable: '--font-titles', 
+  weight: ['500','600', '700'],
+  variable: '--font-fraunces',
+	display: 'swap' 
 });
 
-const lora = Lora({ 
+const jakarta = Plus_Jakarta_Sans({ 
   subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-body',
+  weight: ['400', '500', '600'],
+  variable: '--font-jakarta',
 });
 
 // 2. I tuoi Metadata (lasciali come sono)
@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
 
   return (
     // Aggiungiamo le variabili dei font qui nella classe di <html>
-    <html lang="it" className={`${playfair.variable} ${lora.variable}`}>
+    <html lang="it" className={`${fraunces.variable} ${jakarta.variable}`}>
       <body>
 
 				<AOSinit />

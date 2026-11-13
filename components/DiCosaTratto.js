@@ -1,4 +1,4 @@
-'use client'; // Corretto il refuso 'use-client' in 'use client'
+'use client';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 const trattamenti = [
@@ -12,7 +12,7 @@ const trattamenti = [
   }, 
   {
     titolo: "Malattie Autoimmuni",
-    descrizione: ["Celiachia", "Ipotiroidismo, Tirodite di Hashimoto", "Ipertiroidismo", "Patologie Autoimmuni"]
+    descrizione: ["Celiachia", "Ipotiroidismo, Tiroidite di Hashimoto", "Ipertiroidismo", "Patologie Autoimmuni"]
   }, 
   {
     titolo: "Nutrizione Pediatrica",
@@ -26,42 +26,106 @@ const trattamenti = [
 
 export default function Trattamenti() {
   return (
-    <section className='py-5' style={{backgroundColor: '#85937a'}}>
-      <Container>
+    <section className='py-5' style={{ backgroundColor: '#85937a' }}>
+      <Container className='py-3'>
+        
+        {/* Intestazione Sezione */}
         <div 
-          className='text-center mb-5' 
-          data-aos="fade-down" // Il titolo scende dall'alto
+          className='text-center mx-auto mb-5' 
+          style={{ maxWidth: '650px' }}
+          data-aos="fade-down"
         >
-          <h2 className='fw-bold text-white display-7'>DI COSA MI OCCUPO</h2>
+          <span 
+            className='text-uppercase d-block mb-2' 
+            style={{ 
+              letterSpacing: '0.18em', 
+              fontSize: '0.8rem', 
+              fontWeight: 600, 
+              color: '#f6ede0' 
+            }}
+          >
+            Aree di intervento
+          </span>
+          <h2 className='display-5 fw-bold text-white mb-3'>
+            Di cosa mi occupo
+          </h2>
+          <p className='mb-0' style={{ color: '#f6ede0', fontSize: '1.05rem', lineHeight: 1.6 }}>
+            Percorsi nutrizionali su misura, studiati per accompagnarti con equilibrio e consapevolezza in ogni fase della vita.
+          </p>
         </div>
 
-        <Row className='g-4'>
+        {/* Griglia Card (justify-content-center centra automaticamente le ultime 2 card su desktop) */}
+        <Row className='g-4 justify-content-center'>
           {trattamenti.map((item, index) => (
             <Col 
               key={index} 
               lg={4} md={6} sm={12}
-              data-aos="fade-up" // Le card salgono dal basso
-              data-aos-delay={index * 100} // Effetto cascata: ogni card ritarda di 100ms rispetto alla precedente
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
             >
-              <Card className='h-100 border-0 shadow-sm hover-shadow rounded-5'>
-                <Card.Body className='p-4'>
-                  <Card.Title className='fw-bold text-dark mb-4 fs-5 border-bottom pb-2'>
-                    {item.titolo}
-                  </Card.Title>
+              <Card 
+                className='h-100 border-0 shadow-sm hover-shadow rounded-4 overflow-hidden'
+                style={{ 
+                  backgroundColor: '#fcfaf6',
+                  borderTop: '4px solid var(--foreground)' 
+                }}
+              >
+                <Card.Body className='p-4 p-lg-4 d-flex flex-column'>
+                  
+                  {/* Numero editoriale + Titolo */}
+                  <div className='mb-4 pb-3 border-bottom' style={{ borderColor: 'rgba(27, 77, 62, 0.12) !important' }}>
+                    <span 
+                      className='d-block mb-1' 
+                      style={{ 
+                        fontSize: '0.75rem', 
+                        fontWeight: 600, 
+                        letterSpacing: '0.1em', 
+                        color: '#85937a' 
+                      }}
+                    >
+                      0{index + 1}
+                    </span>
+                    <Card.Title 
+                      as="h3" 
+                      className='h4 fw-bold mb-0' 
+                      style={{ color: 'var(--foreground)' }}
+                    >
+                      {item.titolo}
+                    </Card.Title>
+                  </div>
 
-                  <ul className='list-unstyled mb-0 ps-0'>
+                  {/* Voci trasformate in tag/pillole pulite */}
+                  <div className='d-flex flex-column gap-2'>
                     {item.descrizione.map((elemento, i) => (
-                      <li key={i} className='d-flex align-items-start mb-3 text-secondary'>
-                        <span className='text-dark me-2' style={{fontSize: '1.2rem', lineHeight: '1'}}>•</span>
-                        <span className="card-text" style={{fontSize: '0.95rem', fontWeight:'400'}}>{elemento}</span>
-                      </li>
+                      <div 
+                        key={i} 
+                        className='py-2 px-3 rounded-3 d-flex align-items-center'
+                        style={{ 
+                          backgroundColor: '#f4ede2', 
+                          color: '#1b4d3e',
+                          fontSize: '0.92rem',
+                          fontWeight: 500
+                        }}
+                      >
+                        <span 
+                          className='me-2 rounded-circle flex-shrink-0' 
+                          style={{ 
+                            width: '6px', 
+                            height: '6px', 
+                            backgroundColor: '#85937a' 
+                          }}
+                        />
+                        <span>{elemento}</span>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
+
                 </Card.Body>
               </Card>
             </Col>
           ))}
         </Row>
+
       </Container>
     </section>
   );
