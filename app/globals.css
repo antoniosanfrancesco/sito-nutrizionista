@@ -15,7 +15,7 @@
 html, body {
   background-color: var(--background) !important;
   color: var(--foreground) !important;
-  font-family: var(--font-jakarta), sans-serif; /* Plus Jakarta Sans resta perfetto per i paragrafi */
+  font-family: var(--font-jakarta), sans-serif;
 	scroll-behavior: smooth;
 	scroll-padding-top: 80px;
 }
@@ -25,7 +25,6 @@ h1, h2, h3, .h1, .h2, .h3, .display-3, .display-5 {
   font-family: var(--font-elegant) !important;
   font-weight: 600 !important;
   letter-spacing: -0.01em;
-  /* Se vuoi il corsivo sui titoli principali (es. il nome della Dottoressa) puoi aggiungere font-style: italic; */
 }
 
 .lead {
@@ -113,9 +112,9 @@ section {
 
 .navbar-toggler {
 	padding: 10px !important;
-    z-index: 1050 !important;
-    cursor: pointer;
-    pointer-events: auto !important;
+  z-index: 1050 !important;
+  cursor: pointer;
+  pointer-events: auto !important;
 }
 
 .nav-hover-link {
@@ -140,4 +139,77 @@ section {
 
 .nav-hover-link:hover::after {
   width: calc(100% - 2rem);
+}
+
+.mobile-nav-link {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.85;
+}
+
+.mobile-nav-link:hover, .mobile-nav-link:active {
+  opacity: 1;
+  transform: scale(1.05);
+  color: #85937a !important;
+}
+
+.btn-close-custom:hover {
+  background-color: #1b4d3e !important;
+  color: #f6ede0 !important;
+  transform: scale(1.05);
+}
+
+/* Overlay a espansione circolare per il menu mobile */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f6ede0;
+  z-index: 1080;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  
+  /* Stato chiuso: cerchio a 0 pixel posizionato sull'hamburger */
+  clip-path: circle(0px at calc(100% - 50px) 45px);
+  transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease, visibility 0.8s ease;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Stato aperto: il cerchio si espande coprendo tutto lo schermo */
+.mobile-menu-overlay.open {
+  clip-path: circle(150% at calc(100% - 50px) 45px);
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Stato di chiusura in corso: fa ripartire l'animazione al contrario */
+.mobile-menu-overlay.is-closing {
+  clip-path: circle(0px at calc(100% - 50px) 45px);
+  pointer-events: none;
+  opacity: 0;
+  visibility: visible;
+}
+
+/* Animazione in entrata per i testi interni */
+.mobile-menu-overlay.open .animate-in {
+  animation: fadeInMenu 0.6s ease forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+@keyframes fadeInMenu {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
