@@ -1,5 +1,11 @@
 'use client';
+import { useRef } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const trattamenti = [
   {
@@ -25,15 +31,45 @@ const trattamenti = [
 ];
 
 export default function Trattamenti() {
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    // 1. Intestazione rallentata ed elegante solo per questa pagina
+    gsap.from('.gsap-trattamenti-header', {
+      y: 40,
+      opacity: 0,
+      duration: 1.4, // Più lenta e morbida
+      stagger: 0.22, // Distacco maggiore tra span, h2 e p
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.gsap-trattamenti-header',
+        start: 'top 85%',
+      },
+    });
+
+    // 2. Animazione a cascata standard per le card
+    gsap.from('.gsap-trattamento-card', {
+      y: 40,
+      scale: 0.95,
+      opacity: 0,
+      duration: 0.9,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.gsap-trattamenti-grid',
+        start: 'top 82%',
+      },
+    });
+  }, { scope: containerRef });
+
   return (
-    <section className='py-5' style={{ backgroundColor: '#85937a' }}>
+    <section ref={containerRef} className='py-5' style={{ backgroundColor: '#85937a' }}>
       <Container className='py-3'>
         
         {/* Intestazione Sezione */}
         <div 
-          className='text-center mx-auto mb-5' 
+          className='text-center mx-auto mb-5 gsap-trattamenti-header' 
           style={{ maxWidth: '650px' }}
-          data-aos="fade-down"
         >
           <span 
             className='text-uppercase d-block mb-2' 
@@ -54,14 +90,13 @@ export default function Trattamenti() {
           </p>
         </div>
 
-        {/* Griglia Card (justify-content-center centra automaticamente le ultime 2 card su desktop) */}
-        <Row className='g-4 justify-content-center'>
+        {/* Griglia Card */}
+        <Row className='g-4 justify-content-center gsap-trattamenti-grid'>
           {trattamenti.map((item, index) => (
             <Col 
               key={index} 
               lg={4} md={6} sm={12}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
+              className="gsap-trattamento-card"
             >
               <Card 
                 className='h-100 border-0 shadow-sm hover-shadow rounded-4 overflow-hidden'
@@ -73,7 +108,7 @@ export default function Trattamenti() {
                 <Card.Body className='p-4 p-lg-4 d-flex flex-column'>
                   
                   {/* Numero editoriale + Titolo */}
-                  <div className='mb-4 pb-3 border-bottom' style={{ borderColor: 'rgba(27, 77, 62, 0.12) !important' }}>
+                  <div className='mb-4 pb-3 border-bottom' style={{ borderColor: 'rgba(27, 77, 62, 0.12)' }}>
                     <span 
                       className='d-block mb-1' 
                       style={{ 

@@ -47,7 +47,7 @@ export default function TopNavBar() {
           <Navbar.Brand 
             as={Link} 
             href='/' 
-            className='fw-bold m-0' 
+            className='fw-bold m-0 nav-hover-link' 
             style={{ 
               fontFamily: 'var(--font-elegant, serif)', 
               fontSize: '1.25rem', 
@@ -84,7 +84,7 @@ export default function TopNavBar() {
               <Nav.Link as={Link} href="/#dove-ricevo" className="px-3 text-dark fw-medium nav-hover-link">Dove Ricevo</Nav.Link>
             </Nav>
 
-            <Link href="https://wa.me/+393762278025" passHref legacyBehavior>
+            <Link href="https://wa.me/+393762278025" passHref>
               <Button 
                 className="btn-custom rounded-pill px-4 py-2 fw-medium shadow-sm ms-2"
                 style={{ fontSize: '0.9rem' }}

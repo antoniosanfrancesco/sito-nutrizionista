@@ -3,8 +3,6 @@ import { Fraunces,  Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import TopNavBar from '../components/TopNavbar'; // Assicurati che il percorso sia corretto
 import Footer from '@/components/Footer';
-import 'aos/dist/aos.css';
-import AOSinit from '@/components/AOSinit';
 
 
 // 1. Configurazione dei font
@@ -38,8 +36,6 @@ export default function RootLayout({ children }) {
     // Aggiungiamo le variabili dei font qui nella classe di <html>
     <html lang="it" className={`${fraunces.variable} ${jakarta.variable}`}>
       <body>
-
-				<AOSinit />
 
 				{/*Nav Bar*/}
         <TopNavBar />

@@ -1,9 +1,16 @@
 'use client';
+import { useRef, useState } from 'react';
 import { Container, Row, Col, Button, Form, Spinner } from 'react-bootstrap';
-import { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function FormArea() {
+  const containerRef = useRef(null);
+
   const [testo, setTesto] = useState("");
   const [nome, setNome] = useState("");
   const [numero, setNumero] = useState("");
@@ -11,6 +18,34 @@ export default function FormArea() {
   
   // 1. Stato per il caricamento
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useGSAP(() => {
+    // 1. Animazione del box principale del form
+    gsap.from('.gsap-form-box', {
+      y: 40,
+      scale: 0.96,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.gsap-form-box',
+        start: 'top 82%',
+      },
+    });
+
+    // 2. Animazione a cascata per i campi del form e il bottone
+    gsap.from('.gsap-form-field', {
+      y: 20,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.gsap-form-box',
+        start: 'top 78%',
+      },
+    });
+  }, { scope: containerRef });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,7 +88,7 @@ export default function FormArea() {
   };
 
   return (
-    <Container className="py-5" style={{ overflow: 'hidden' }}>
+    <Container ref={containerRef} className="py-5" style={{ overflow: 'hidden' }}>
       {/* 4. Aggiungiamo lo stile CSS per l'effetto hover direttamente qui */}
       <style jsx>{`
         .btn-custom {
@@ -70,13 +105,9 @@ export default function FormArea() {
       `}</style>
 
       <Row className="justify-content-center">
-        <Col 
-          md={8} lg={8} 
-          data-aos="zoom-in"
-          data-aos-duration="1200"
-        >
-          <div className="bg-white p-4 p-md-5 rounded-5 shadow-sm">
-            <h2 className="font-bodoni mb-4 text-center" style={{ color: '#1b4d3e' }}>
+        <Col md={8} lg={8}>
+          <div className="bg-white p-4 p-md-5 rounded-5 shadow-sm gsap-form-box">
+            <h2 className="font-bodoni mb-4 text-center" style={{ color: '#1b4d3e', fontFamily: 'var(--font-elegant, serif)' }}>
               Hai qualche dubbio?
             </h2>
             <p className="text-center text-muted mb-4">
@@ -84,20 +115,20 @@ export default function FormArea() {
             </p>
 
             <Form onSubmit={handleSubmit}>
-              <Form.Group className='mb-3' data-aos="fade-up" data-aos-delay="200">
+              <Form.Group className='mb-3 gsap-form-field'>
                 <Form.Label>Nome e Cognome</Form.Label>
                 <Form.Control
                   type='text'
                   placeholder='Mario Rossi'
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
-									autoComplete='name'
-									name='name'
+                  autoComplete='name'
+                  name='name'
                   required
                 />
               </Form.Group>
 
-              <Form.Group className='mb-3' data-aos="fade-up" data-aos-delay="300">
+              <Form.Group className='mb-3 gsap-form-field'>
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type='email'
@@ -105,21 +136,22 @@ export default function FormArea() {
                   value={mail}
                   onChange={(e) => setMail(e.target.value)}
                   required
-									autoComplete='email'
+                  autoComplete='email'
                 />
               </Form.Group>
               
-              <Form.Group className='mb-3' data-aos="fade-up" data-aos-delay="400">
+              <Form.Group className='mb-3 gsap-form-field'>
                 <Form.Label>Numero di telefono</Form.Label>
                 <Form.Control
                   type='tel'
                   placeholder='Il tuo numero'
                   value={numero}
                   onChange={(e) => setNumero(e.target.value)}
-									autoComplete='tel'/>
+                  autoComplete='tel'
+                />
               </Form.Group>
 
-              <Form.Group className="mb-4" data-aos="fade-up" data-aos-delay="500">
+              <Form.Group className="mb-4 gsap-form-field">
                 <Form.Label>Il tuo messaggio</Form.Label>
                 <Form.Control 
                   as="textarea" 
@@ -132,7 +164,7 @@ export default function FormArea() {
                 />
               </Form.Group>
 
-              <div className="text-center" data-aos="fade-up" data-aos-delay="600">
+              <div className="text-center gsap-form-field">
                 <Button 
                   type="submit" 
                   className="border-0 py-3 px-5 shadow-sm btn-custom"

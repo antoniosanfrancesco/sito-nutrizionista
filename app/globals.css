@@ -213,3 +213,45 @@ section {
     transform: translateY(0);
   }
 }
+
+.botanic-pattern-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.botanic-pattern-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Richiama il colore verde scuro del brand (#1b4d3e) con opacità al 5% */
+  color: var(--foreground); 
+  opacity: 0.05; 
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800' width='100%' height='100%'%3E%3Cg fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3C!-- Mela stilizzata --%3E%3Cpath d='M150,200 c20,-20 40,-20 60,0 c20,20 20,40 0,60 c-30,30 -60,20 -60,-60 z M180,190 c0,-15 10,-25 15,-30' /%3E%3C!-- Pera stilizzata --%3E%3Cpath d='M650,150 c15,-10 30,0 25,20 c-5,35 -25,60 -35,85 c-10,-25 -30,-50 -35,-85 c-5,-20 10,-30 25,-20 c5,5 10,5 20,0 z M640,130 c0,-10 10,-15 15,-20' /%3E%3C!-- Banana stilizzata --%3E%3Cpath d='M200,650 c50,20 120,0 180,-40 c-30,-30 -80,-50 -130,-40 c-30,10 -50,40 -50,80 z' /%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 600px 600px; /* Regola la spaziatura tra i frutti */
+}
+
+/* Assicura che il contenuto della sezione stia sopra lo sfondo */
+.botanic-pattern-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Personalizzazione Accordion FAQ */
+.custom-faq-accordion .accordion-button {
+  background-color: #fcfaf6 !important;
+  padding: 1.25rem 1.5rem;
+  box-shadow: none !important;
+}
+
+.custom-faq-accordion .accordion-button:not(.collapsed) {
+  color: #1b4d3e !important;
+  background-color: #f4ede2 !important;
+}
+
+.custom-faq-accordion .accordion-button:focus {
+  border-color: rgba(27, 77, 62, 0.2);
+  box-shadow: none !important;
+}

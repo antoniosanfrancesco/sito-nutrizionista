@@ -1,6 +1,12 @@
 'use client'; 
+import { useRef } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import Link from 'next/link'; 
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const listaServizi = [
   {
@@ -21,15 +27,45 @@ const listaServizi = [
 ];
 
 export default function ServiziHome() {
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    // 1. Animazione dell'intestazione (Titolo e sottotitolo)
+    gsap.from('.gsap-servizi-header', {
+      y: 30,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.gsap-servizi-header',
+        start: 'top 85%',
+      },
+    });
+
+    // 2. Animazione a cascata per le card (simile allo zoom-in-up con delay)
+    gsap.from('.gsap-servizio-card', {
+      y: 40,
+      scale: 0.95,
+      opacity: 0,
+      duration: 0.9,
+      stagger: 0.18, // Crea l'effetto sequenziale pulito tra una card e l'altra
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.gsap-servizi-grid',
+        start: 'top 82%',
+      },
+    });
+  }, { scope: containerRef });
+
   return (
-    <section className='py-5' style={{ backgroundColor: 'var(--background)' }}>
+    <section ref={containerRef} className='py-5' style={{ backgroundColor: 'var(--background)' }}>
       <Container className='py-3' style={{ overflow: 'hidden' }}>
         
         {/* Intestazione Sezione */}
         <div 
-          className='text-center mx-auto mb-5'
+          className='text-center mx-auto mb-5 gsap-servizi-header'
           style={{ maxWidth: '650px' }}
-          data-aos="fade-up"
         >
           <span 
             className='text-uppercase d-block mb-2' 
@@ -51,13 +87,12 @@ export default function ServiziHome() {
         </div>
 
         {/* Griglia Servizi */}
-        <Row className='g-4 justify-content-center'>
+        <Row className='g-4 justify-content-center gsap-servizi-grid'>
           {listaServizi.map((servizio, index) => (
             <Col 
               key={index} 
               lg={4} md={6} sm={12}
-              data-aos="zoom-in-up"
-              data-aos-delay={index * 150}
+              className="gsap-servizio-card"
             >
               <Card 
                 className='h-100 border-0 shadow-sm hover-shadow rounded-4 overflow-hidden d-flex flex-column'

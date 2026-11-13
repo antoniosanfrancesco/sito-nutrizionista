@@ -9,7 +9,7 @@ export default function SocialLinks({ colorClass = "text-dark", size = 24 }) {
   ];
 
   return (
-    <div className="d-flex gap-3 justify-content-start ml-2 mb-5" data-aos="fade-up">
+    <div className="d-flex gap-3 justify-content-start ml-2 mb-5">
       {socials.map((social) => (
         <a 
           key={social.id} 
